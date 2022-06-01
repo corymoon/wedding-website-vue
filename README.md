@@ -1,5 +1,7 @@
 # wedding-website-vue
 
+My wedding website, built with Vue using Buefy.
+
 ## Project setup
 ```
 yarn install

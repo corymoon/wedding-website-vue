@@ -1,0 +1,16 @@
+<template>
+    <h4 class="is-size-4 is-uppercase has-text-weight-bold pb-6 section-title">{{ title }}</h4>
+</template>
+
+<script>
+    export default {
+        props: ['title'],
+    }
+</script>
+
+<style lang="scss">
+    .section-title {
+        letter-spacing: 3px;
+        line-height: 29px;
+    }
+</style>

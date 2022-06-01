@@ -1,0 +1,25 @@
+.footer {
+  background-color: $my-primary-very-light !important;
+  border-top: 1px solid rgba($primary, 0.27) !important;
+}
+
+.heart-icon {
+  color: #ff415c;
+  font-size: 18px;
+  margin: 0 2px;
+}
+
+.to-top-wrapper {
+  $margin-amount: 75px;
+
+  text-align: center;
+  margin: ($margin-amount * -1) 0 $margin-amount;
+}
+
+.to-top-button {
+  $button-size: 60px;
+
+  width: $button-size !important;
+  height: $button-size !important;
+  border-radius: 50% !important;
+}
