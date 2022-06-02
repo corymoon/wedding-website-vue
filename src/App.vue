@@ -14,15 +14,8 @@
       <template #end>
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a
-              class="button is-rounded"
-              :class="action.primary ? '' : 'is-outlined is-light'"
-              v-for="action in navActions"
-              :key="action.label"
-              :href="action.href"
-              v-smooth-scroll
-            >
-              <strong>{{ action.label }}</strong>
+            <a class="button is-rounded" href="#rsvp" v-smooth-scroll>
+              <strong>RSVP</strong>
             </a>
           </div>
         </b-navbar-item>
@@ -127,13 +120,4 @@ export default {
 .transparent-nav {
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
-
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
 </style>
