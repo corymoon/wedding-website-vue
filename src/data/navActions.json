@@ -1,0 +1,12 @@
+[
+    {
+      "label": "Venue",
+      "href": "#map",
+      "primary": false
+    },
+    {
+      "label": "RSVP",
+      "href": "#rsvp",
+      "primary": true
+    }
+  ]

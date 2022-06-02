@@ -14,8 +14,14 @@
       <template #end>
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a :class="action.primary ? 'button is-primary is-rounded' : 'button is-light is-rounded'"
-              v-for="action in navActions" :key="action.label" :href="action.href" v-smooth-scroll>
+            <a
+              class="button is-rounded"
+              :class="action.primary ? '' : 'is-outlined is-light'"
+              v-for="action in navActions"
+              :key="action.label"
+              :href="action.href"
+              v-smooth-scroll
+            >
               <strong>{{ action.label }}</strong>
             </a>
           </div>
@@ -49,6 +55,11 @@ import LodgingSection from './sections/LodgingSection.vue'
 import RsvpSection from './sections/RsvpSection.vue'
 import PageFooter from './components/PageFooter.vue'
 
+import { navItems } from './data/navItems'
+import navActions from './data/navActions.json'
+
+import { showStory } from './data/toggles'
+
 export default {
   name: 'App',
   components: {
@@ -66,48 +77,11 @@ export default {
   },
   data: function () {
     return {
-      showStory: true,
+      showStory,
       showNavbar: true,
       lastScrollPosition: 0,
-      navItems: [
-        {
-          label: 'Our Story',
-          href: '#story',
-          display: false,
-        },
-        {
-          label: 'Events',
-          href: '#events',
-          display: false,
-        },
-        {
-          label: 'Photos',
-          href: '#photos',
-          display: true,
-        },
-        {
-          label: 'Lodging',
-          href: '#lodging',
-          display: false,
-        },
-        {
-          label: 'Oak Hill Farm',
-          href: '#venue',
-          display: true,
-        },
-      ],
-      navActions: [
-        {
-          label: 'Venue',
-          href: '#map',
-          primary: false,
-        },
-        {
-          label: 'RSVP',
-          href: '#rsvp',
-          primary: true,
-        },
-      ],
+      navItems,
+      navActions,
     }
   },
   computed: {

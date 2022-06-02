@@ -1,6 +1,6 @@
 <template>
     <page-section id="map">
-        <section-title title="How do I get there?" />
+        <section-title>How do I get there?</section-title>
         <p>It's way easier than you think!</p>
         <a :href="googleMapsLink">Open in Google Maps</a>
     </page-section>

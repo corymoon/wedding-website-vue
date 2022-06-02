@@ -1,84 +1,60 @@
 <template>
-    <page-section id="events" md v-if="showEvents">
-        <section-title title="Events" />
-        <b-steps v-if="showEvents">
-            <b-step-item
-                v-for="event in events"
-                :key="event.name"
-                :label="event.name"
-                :icon="event.icon"
-                clickable
-            >
-                <div>
-                    {{ formatDate(event.date) }}<br/>
-                    {{ event.desc }}
+    <section id="events" class="section">
+        <section-title class="has-text-centered">Events</section-title>
+        <div class="timeline is-centered" v-if="showEvents">
+
+            <!-- start header -->
+            <header class="timeline-header">
+                <span class="tag is-medium is-primary">Start</span>
+            </header>
+
+            <!-- blank item -->
+            <div class="timeline-item is-primary">
+            </div>
+
+            <template v-for="event in events">
+                <!-- small header -->
+                <header class="timeline-header" v-if="event.header" :key="event.id">
+                    <span class="tag is-primary">{{ event.title }}</span>
+                </header>
+                <!-- item -->
+                <div class="timeline-item is-primary" v-else :key="event.id + '-item'">
+                    <div class="timeline-marker is-primary"></div>
+                    <div class="timeline-marker is-primary is-icon">
+                        <i :class="`fa fa-${event.icon}`"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <p class="heading">{{ event.time }}</p>
+                        <p>{{ event.desc }}</p>
+                    </div>
                 </div>
-            </b-step-item>
-        </b-steps>
-        <div v-else>
+            </template>
+
+            <!-- end header -->
+            <header class="timeline-header">
+                <span class="tag is-medium is-primary">End</span>
+            </header>
+        </div>
+
+        <div v-else class="has-text-centered">
             <p>...coming soon</p>
         </div>
-    </page-section>
+    </section>
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import { showEvents } from '@/data/toggles'
+import { events } from '@/data/events'
 
 export default {
     data() {
         return {
-            showEvents: false,
-            events: [
-                {
-                    date: new Date('October 7, 2023 11:00:00'),
-                    name: 'Rehersal',
-                    desc: 'The description',
-                    icon: 'exclamation-triangle'
-                },
-                {
-                    date: new Date('October 7, 2023 18:00:00'),
-                    name: 'Rehersal Dinner',
-                    desc: 'The description',
-                    icon: 'utensils'
-                },
-                {
-                    date: new Date('October 8, 2023 14:00:00'),
-                    name: 'Ceremony',
-                    desc: 'The description',
-                    icon: 'church'
-                },
-                {
-                    date: new Date('October 8, 2023 18:00:00'),
-                    name: 'Reception',
-                    desc: 'The description',
-                    icon: 'glass-cheers'
-                },
-                {
-                    date: new Date('October 9, 2023 09:00:00'),
-                    name: 'Farewell Brunch',
-                    desc: 'The description',
-                    icon: 'coffee'
-                },
-            ]
-        }
-    },
-    methods: {
-        formatDate(date) {
-            let formatted = dayjs(date).format('MMMM D, YYYY h:mm A')
-            return formatted;
+            showEvents,
+            events,
         }
     }
 }
 </script>
 
 <style>
-    .timeline-item {
-        flex-grow: 1;
-    }
-    .timeline-content {
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
 </style>

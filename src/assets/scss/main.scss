@@ -83,6 +83,7 @@ $link-focus-border: $primary;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+@import "~bulma-timeline/dist/css/bulma-timeline";
 
 // fonts
 $family-sans-serif: 'Josefin Sans', sans-serif !important;
@@ -120,6 +121,10 @@ $family-secondary: $family-sans-serif;
   color: rgba($primary, 0.87);
 }
 
+html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+  padding-top: 0 !important;
+}
+
 body {
   font-family: $family-sans-serif;
   font-weight: 300;
@@ -127,4 +132,8 @@ body {
 
 p {
   font-size: 15px;
+}
+
+a {
+  font-weight: 400 !important;
 }

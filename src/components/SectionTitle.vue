@@ -1,10 +1,11 @@
 <template>
-    <h4 class="is-size-4 is-uppercase has-text-weight-bold pb-6 section-title">{{ title }}</h4>
+    <h4 class="is-size-4 is-uppercase has-text-weight-bold pb-6 section-title">
+        <slot></slot>
+    </h4>
 </template>
 
 <script>
     export default {
-        props: ['title'],
     }
 </script>
 

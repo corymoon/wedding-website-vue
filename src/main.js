@@ -12,6 +12,9 @@ import {
   faInfoCircle,
   faHeart,
   faWindowClose,
+  faMapMarkerAlt,
+  faGlobe,
+  faDrumstickBite
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -23,7 +26,18 @@ import SectionContent from './components/SectionContent.vue'
 // styles
 import './assets/scss/main.scss'
 
-library.add(faMapMarker, faUser, faEnvelope, faAngleUp, faInfoCircle, faHeart, faWindowClose)
+library.add(
+  faMapMarker,
+  faUser,
+  faEnvelope,
+  faAngleUp,
+  faInfoCircle,
+  faHeart,
+  faWindowClose,
+  faMapMarkerAlt,
+  faGlobe,
+  faDrumstickBite,
+)
 
 Vue.use(Buefy, {
   defaultIconPack: 'fa',

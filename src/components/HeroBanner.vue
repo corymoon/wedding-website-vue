@@ -11,7 +11,9 @@
 
 <script>
 export default {
-
+  data() {
+    return {}
+  }
 }
 </script>
 
@@ -19,5 +21,6 @@ export default {
 .hero-bg {
   background-image: url('../assets/hero.jpeg');
   background-size: cover;
+  background-position: center center;
 }
 </style>

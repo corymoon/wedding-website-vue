@@ -1,0 +1,83 @@
+<template>
+    <form name="submit-email-to-google-sheet">
+        <input type="hidden" name="Created" value="x-sheetmonkey-current-date-time" />
+        <b-field grouped group-multiline>
+            <b-field label-position="on-border" label="Name" expanded class="mb-5">
+                <b-input rounded icon="user" :value="name" v-model="name" name="Name" />
+            </b-field>
+            <b-field label-position="on-border" label="Email" expanded class="mb-5">
+                <b-input rounded icon="envelope" :value="email" v-model="email" name="Email" />
+            </b-field>
+        </b-field>
+        <!-- / join email list form -->
+
+        <b-message type="is-success" v-show="showEmailSubmitSuccess">
+            Thanks! We'll keep you updated!
+        </b-message>
+        <b-message type="is-warning" v-show="showEmailSubmitFail">
+            Hmm... Something went wrong. Try again later.
+        </b-message>
+        <b-button
+            rounded
+            expanded
+            type="is-primary"
+            :loading="submitting"
+            :disabled="submitting || emailSubmitDisabled"
+            @click="submitEmailListForm()"
+        >
+            Submit
+        </b-button>
+    </form>
+</template>
+
+<script>
+import formUrl from "../../data/formUrl.json"
+export default {
+    data() {
+        return {
+            name: null,
+            email: null,
+            emailReg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+            showEmailSubmitSuccess: false,
+            showEmailSubmitFail: false,
+            submitting: false,
+        }
+    },
+    methods: {
+        resetForm() {
+            this.name = null;
+            this.email = null;
+        },
+        submitEmailListForm() {
+            this.submitting = true;
+            const form = document.forms['submit-email-to-google-sheet']
+
+            fetch(formUrl.emailList, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    console.log('Success!', response);
+                    this.showEmailSubmitSuccess = true;
+                    this.submitting = false;
+                    this.resetForm();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    this.showEmailSubmitFail = true;
+                    this.submitting = false;
+                    this.resetForm();
+                })
+        },
+    },
+    computed: {
+        validEmail() {
+            return (this.emailReg.test(this.email)) ? true : false;
+        },
+        emailSubmitDisabled() {
+            let disabled = true;
+            if (this.email !== null && this.name != null && this.validEmail) {
+                disabled = false;
+            }
+            return disabled;
+        },
+    }
+}
+</script>

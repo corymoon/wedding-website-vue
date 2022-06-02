@@ -1,6 +1,6 @@
 <template>
     <page-section md id="intro">
-        <section-title title="We are getting married" />
+        <section-title>We are getting married</section-title>
         <section-content>
             <p class="has-text-weight-semibold mb-4">...in {{ daysLeft }}</p>
             <p>The dates are 6th & through 9th of October '23, with the ceremony happening on the 8th, and we would like you to be a part of it.</p>
@@ -11,7 +11,7 @@
 <script>
     export default {
         computed: {
-            daysLeft: function () {
+            daysLeft() {
                 var today = new Date();
                 var weddingDate = new Date(2023, 9, 8);
                 if (today.getMonth() == 11 && today.getDate() > 25) {

@@ -1,6 +1,6 @@
 <template>
     <page-section md accent id="photos">
-        <section-title title="Our story in photos" />
+        <section-title>Our story in photos</section-title>
         <div class="columns is-align-items-center">
             <div class="column" v-for="(photo, i) in photos" :key="`photo-${i}`">
                 <VuePureLightbox
@@ -30,14 +30,6 @@ export default {
     },
     data() {
         return {
-            gallery: false,
-            carousels: [
-                { text: 'Slide 1', color: 'primary' },
-                { text: 'Slide 2', color: 'info' },
-                { text: 'Slide 3', color: 'success' },
-                { text: 'Slide 4', color: 'warning' },
-                { text: 'Slide 5', color: 'danger' }
-            ],
             photos: [
                 // {
                 //     large: 'carousel/001.jpeg',
@@ -79,18 +71,6 @@ export default {
         }
     },
     methods: {
-        getImgUrl(value) {
-            value += 50
-            return `https://picsum.photos/id/10${value}/1230/500`
-        },
-        switchGallery(value) {
-            this.gallery = value
-            if (value) {
-                return document.documentElement.classList.add('is-clipped')
-            } else {
-                return document.documentElement.classList.remove('is-clipped')
-            }
-        }
     }
 }
 </script>
