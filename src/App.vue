@@ -24,7 +24,7 @@
     <HeroBanner id="top" />
     <IntroSection />
     <OurStory v-if="showStory" />
-    <EventsSection />
+    <EventsSection v-if="showEvents" />
     <PhotoCarousel />
     <VenueSection />
     <MapSection />
@@ -51,7 +51,7 @@ import PageFooter from './components/PageFooter.vue'
 import { navItems } from './data/navItems'
 import navActions from './data/navActions.json'
 
-import { showStory } from './data/toggles'
+import { showStory, showEvents } from './data/toggles'
 
 export default {
   name: 'App',
@@ -71,6 +71,7 @@ export default {
   data: function () {
     return {
       showStory,
+      showEvents,
       showNavbar: true,
       lastScrollPosition: 0,
       navItems,
