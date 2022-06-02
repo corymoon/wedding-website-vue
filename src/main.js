@@ -26,6 +26,9 @@ import SectionContent from './components/SectionContent.vue'
 // styles
 import './assets/scss/main.scss'
 
+// maps api
+import {mapsAPIkey} from '../maps'
+
 library.add(
   faMapMarker,
   faUser,
@@ -46,7 +49,7 @@ Vue.use(VueSmoothScroll, {
   duration: 700,
 })
 Vue.use(VueGoogleMaps, {
-  load: {key: 'AIzaSyDmIJiAHdtBAUBEV88iodb0b4UnM7uru94'},
+  load: {key: mapsAPIkey},
   installComponents: true
 })
 
