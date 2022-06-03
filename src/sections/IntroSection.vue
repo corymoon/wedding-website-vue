@@ -1,5 +1,5 @@
 <template>
-    <page-section md id="intro">
+    <page-section md image id="intro">
         <section-title>We are getting married</section-title>
         <section-content>
             <p class="has-text-weight-semibold mb-4">...in {{ daysLeft }}</p>

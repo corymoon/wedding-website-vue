@@ -122,6 +122,10 @@ $family-serif: 'Playfair Display', serif !important;
   border-top: 1px solid $my-primary-light !important;
 }
 
+.warning-bg-very-light {
+  background-color: $my-warning-very-light !important;
+}
+
 .control.has-icons-left .input:focus ~ .icon, .control.has-icons-left .select:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon, .control.has-icons-right .select:focus ~ .icon {
   color: rgba($primary, 0.87);
 }

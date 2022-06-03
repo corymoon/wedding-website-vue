@@ -1,5 +1,5 @@
 <template>
-    <page-section id="rsvp">
+    <page-section id="rsvp" image>
         <section-title>{{ title }}</section-title>
         <section-content v-if="canRsvp" class="mb-6">
             <p class="mb-3">We would greatly appreciate if you could RSVP before 8th of August '23</p>
