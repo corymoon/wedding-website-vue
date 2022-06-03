@@ -85,8 +85,10 @@
                     <div class="content">
                         <section-title>Transportation</section-title>
                         <p>Transportation will be provided for all to the ceremony and reception at Oak Hill Farm on
-                            Sunday, October 8th. No hotel stay required for transportation. It departs from {{ lodging.length == 1 ? 'this' : 'these' }}
-                            {{ numberToWords(lodging.length) }} {{ lodging.length == 1 ? 'location' : 'locations' }}:</p>
+                            Sunday, October 8th. No hotel stay required for transportation. It departs from {{
+                                    lodging.length == 1 ? 'this' : 'these'
+                            }}
+                            {{ numHotels }} {{ locationText }}:</p>
                         <ul>
                             <li v-for="hotel in lodging" :key="hotel.id">
                                 <a :href="hotel.web">
@@ -105,24 +107,24 @@
 </template>
 
 <script>
-import mealOptions from '../../data/mealOptions.json'
-import lodging from '../../data/lodging.json'
-import formUrl from "../../data/formUrl.json"
-
-var converter = require('number-to-words');
+import { lodging } from '@/data/lodging'
+import { rsvpUrl } from '@/data/formUrl'
+import { emailRegex } from '@/data/data'
+import { mealOptions } from '@/data/mealOptions'
 
 export default {
     data() {
         return {
             mealOptions,
             lodging,
+            emailRegex,
+            rsvpUrl,
             name: null,
             email: null,
             phone: null,
             numGuests: null,
             transportationModal: false,
             guestMeals: [],
-            emailReg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
             transportation: null,
             submitting: false,
             showRsvpSubmitSuccess: false,
@@ -142,9 +144,6 @@ export default {
         },
     },
     methods: {
-        numberToWords(value) {
-            return converter.toWords(value);
-        },
         resetForm() {
             this.name = null;
             this.email = null;
@@ -157,7 +156,7 @@ export default {
             this.submitting = true;
             const form = document.forms['submit-rsvp-to-google-sheet']
 
-            fetch(formUrl.rsvp, { method: 'POST', body: new FormData(form) })
+            fetch(rsvpUrl, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     console.log('Success!', response);
                     this.showRsvpSubmitSuccess = true;
@@ -174,7 +173,7 @@ export default {
     },
     computed: {
         validEmail() {
-            return (this.emailReg.test(this.email)) ? true : false;
+            return (this.emailRegex.test(this.email)) ? true : false;
         },
         rsvpDisabled() {
             var g = this.numGuests == null;

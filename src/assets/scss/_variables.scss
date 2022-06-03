@@ -1,3 +1,18 @@
-$my-primary: #967bb6;
+
+// $lavender: #967bb6;
+$lavender: #af95d7;
+
+// $blush-peach: #f9d8cb;
+$blush-peach: #ecc5b9;
+
+// $raspberry-cream: #cf838d;
+$raspberry-cream: #d48c97;
+
+// $eucalyptus: #5F8575;
+$eucalyptus: #789ba4;
+
+$my-primary: $lavender;
+$my-success: $eucalyptus;
+
 $my-primary-very-light: rgba($my-primary, 0.12);
 $my-primary-light: rgba($my-primary, 0.27);

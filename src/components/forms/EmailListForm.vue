@@ -31,13 +31,15 @@
 </template>
 
 <script>
-import formUrl from "../../data/formUrl.json"
+import { emailListUrl } from "@/data/formUrl"
+import { emailRegex } from "@/data/data"
 export default {
     data() {
         return {
+            emailRegex,
+            emailListUrl,
             name: null,
             email: null,
-            emailReg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
             showEmailSubmitSuccess: false,
             showEmailSubmitFail: false,
             submitting: false,
@@ -52,7 +54,7 @@ export default {
             this.submitting = true;
             const form = document.forms['submit-email-to-google-sheet']
 
-            fetch(formUrl.emailList, { method: 'POST', body: new FormData(form) })
+            fetch(emailListUrl, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     console.log('Success!', response);
                     this.showEmailSubmitSuccess = true;
@@ -69,7 +71,7 @@ export default {
     },
     computed: {
         validEmail() {
-            return (this.emailReg.test(this.email)) ? true : false;
+            return (this.emailRegex.test(this.email)) ? true : false;
         },
         emailSubmitDisabled() {
             let disabled = true;

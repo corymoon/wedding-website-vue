@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Buefy from 'buefy'
-import VueSmoothScroll from 'vue2-smooth-scroll'
-import * as VueGoogleMaps from '@busability/vue2-google-maps'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from "vue";
+import App from "./App.vue";
+import Buefy from "buefy";
+import VueSmoothScroll from "vue2-smooth-scroll";
+import * as VueGoogleMaps from "@busability/vue2-google-maps";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faMapMarker,
   faUser,
@@ -14,20 +14,23 @@ import {
   faWindowClose,
   faMapMarkerAlt,
   faGlobe,
-  faDrumstickBite
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+  faDrumstickBite,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // components
-import SectionTitle from './components/SectionTitle.vue'
-import PageSection from './components/PageSection.vue'
-import SectionContent from './components/SectionContent.vue'
+import SectionTitle from "./components/SectionTitle.vue";
+import PageSection from "./components/PageSection.vue";
+import SectionContent from "./components/SectionContent.vue";
 
 // styles
-import './assets/scss/main.scss'
+import "./assets/scss/main.scss";
 
 // maps api
-import {mapsAPIkey} from '../maps'
+import { mapsAPIkey } from "../maps";
+
+// data
+import { lodging } from "@/data/lodging";
 
 library.add(
   faMapMarker,
@@ -39,27 +42,44 @@ library.add(
   faWindowClose,
   faMapMarkerAlt,
   faGlobe,
-  faDrumstickBite,
-)
+  faDrumstickBite
+);
 
 Vue.use(Buefy, {
-  defaultIconPack: 'fa',
-})
+  defaultIconPack: "fa",
+});
 Vue.use(VueSmoothScroll, {
   duration: 700,
-})
+});
 Vue.use(VueGoogleMaps, {
-  load: {key: mapsAPIkey},
-  installComponents: true
-})
+  load: { key: mapsAPIkey },
+  installComponents: true,
+});
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.component('section-title', SectionTitle)
-Vue.component('page-section', PageSection)
-Vue.component('section-content', SectionContent)
+Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.component("section-title", SectionTitle);
+Vue.component("page-section", PageSection);
+Vue.component("section-content", SectionContent);
 
-Vue.config.productionTip = false
+Vue.mixin({
+  computed: {
+    numHotels() {
+      return lodging.length == 1 ? "" : this.numberToWords(lodging.length);
+    },
+    locationText() {
+      return lodging.length == 1 ? "location" : "locations";
+    },
+  },
+  methods: {
+    numberToWords(value) {
+      var converter = require("number-to-words");
+      return converter.toWords(value);
+    },
+  },
+});
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

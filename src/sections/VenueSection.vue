@@ -63,7 +63,6 @@ $video-sm: 200px;
 }
 
 .venue-location {
-    font-size: 15px;
     line-height: 29px;
 }
 </style>

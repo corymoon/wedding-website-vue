@@ -1,4 +1,4 @@
-import { showEvents, showStory, showLodging } from "./toggles";
+import { showEvents, showStory, showLodging, showRegistry } from "./toggles";
 
 export let navItems = [
   {
@@ -20,6 +20,11 @@ export let navItems = [
     label: "Lodging",
     href: "#lodging",
     display: showLodging,
+  },
+  {
+    label: "Registry",
+    href: "#registry",
+    display: showRegistry,
   },
   {
     label: "Oak Hill Farm",

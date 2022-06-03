@@ -9,3 +9,6 @@ export let canRsvp = false;
 
 // toggle showing the lodging section
 export let showLodging = false;
+
+// toggle showing the registry section
+export let showRegistry = false;

@@ -29,7 +29,8 @@
     <VenueSection />
     <MapSection />
     <MapDisplay />
-    <LodgingSection />
+    <RegistrySection v-if="showRegistry" />
+    <LodgingSection v-if="showLodging" />
     <RsvpSection />
     <PageFooter />
   </div>
@@ -45,13 +46,13 @@ import VenueSection from './sections/VenueSection.vue'
 import MapSection from './sections/MapSection.vue'
 import MapDisplay from './sections/MapDisplay.vue'
 import LodgingSection from './sections/LodgingSection.vue'
+import RegistrySection from './sections/RegistrySection.vue'
 import RsvpSection from './sections/RsvpSection.vue'
 import PageFooter from './components/PageFooter.vue'
 
 import { navItems } from './data/navItems'
-import navActions from './data/navActions.json'
 
-import { showStory, showEvents } from './data/toggles'
+import { showStory, showEvents, showLodging, showRegistry } from './data/toggles'
 
 export default {
   name: 'App',
@@ -65,6 +66,7 @@ export default {
     MapSection,
     MapDisplay,
     LodgingSection,
+    RegistrySection,
     RsvpSection,
     PageFooter,
   },
@@ -72,14 +74,15 @@ export default {
     return {
       showStory,
       showEvents,
+      showRegistry,
+      showLodging,
       showNavbar: true,
       lastScrollPosition: 0,
       navItems,
-      navActions,
     }
   },
   computed: {
-    visibleNavItems: function () {
+    visibleNavItems() {
       var items = [];
       this.navItems.forEach(function (item) {
         if (item.display) {
