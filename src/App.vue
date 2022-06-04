@@ -21,38 +21,42 @@
         </b-navbar-item>
       </template>
     </b-navbar>
-    <HeroBanner id="top" />
-    <IntroSection />
-    <OurStory v-if="showStory" />
-    <EventsSection v-if="showEvents" />
-    <PhotoCarousel />
-    <VenueSection />
-    <MapSection />
-    <MapDisplay />
-    <RegistrySection v-if="showRegistry" />
-    <LodgingSection v-if="showLodging" />
-    <RsvpSection />
-    <PageFooter />
+    <hero-banner id="top" />
+    <save-the-date-section v-if="saveTheDate" />
+    <intro-section :class="saveTheDate ? 'pt-6' : ''" />
+    <our-story v-if="showStory" />
+    <events-section v-if="showEvents" />
+    <photo-carousel />
+    <venue-section />
+    <map-section />
+    <map-display />
+    <registry-section v-if="showRegistry" />
+    <lodging-section v-if="showLodging" />
+    <rsvp-section />
+    <page-footer />
   </div>
 </template>
 
 <script>
 import HeroBanner from './components/HeroBanner.vue'
-import IntroSection from './sections/IntroSection.vue'
-import OurStory from './sections/OurStory.vue'
-import EventsSection from './sections/EventsSection.vue'
-import PhotoCarousel from './sections/PhotoCarousel.vue'
-import VenueSection from './sections/VenueSection.vue'
-import MapSection from './sections/MapSection.vue'
-import MapDisplay from './sections/MapDisplay.vue'
-import LodgingSection from './sections/LodgingSection.vue'
-import RegistrySection from './sections/RegistrySection.vue'
-import RsvpSection from './sections/RsvpSection.vue'
 import PageFooter from './components/PageFooter.vue'
+import {
+  IntroSection,
+  OurStory,
+  EventsSection,
+  PhotoCarousel,
+  VenueSection,
+  MapSection,
+  MapDisplay,
+  LodgingSection,
+  RegistrySection,
+  RsvpSection,
+  SaveTheDateSection,
+} from './sections'
 
 import { navItems } from './data/navItems'
 
-import { showStory, showEvents, showLodging, showRegistry } from './data/toggles'
+import { showStory, showEvents, showLodging, showRegistry, saveTheDate } from './data/toggles'
 
 export default {
   name: 'App',
@@ -69,6 +73,7 @@ export default {
     RegistrySection,
     RsvpSection,
     PageFooter,
+    SaveTheDateSection,
   },
   data: function () {
     return {
@@ -76,6 +81,7 @@ export default {
       showEvents,
       showRegistry,
       showLodging,
+      saveTheDate,
       showNavbar: true,
       lastScrollPosition: 0,
       navItems,

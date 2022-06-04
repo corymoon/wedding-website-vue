@@ -1,5 +1,4 @@
 <template>
-
     <!-- rsvp form -->
     <form name="submit-rsvp-to-google-sheet">
         <div class="columns">

@@ -1,3 +1,6 @@
+// toggle showing the `save the date` title
+export let saveTheDate = true;
+
 // toggle showing the `our story` section
 export let showStory = false;
 
