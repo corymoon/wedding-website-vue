@@ -11,10 +11,10 @@
           {{ item.label }}
         </b-navbar-item>
       </template>
-      <template #end>
+      <template #end v-if="!isWeddingDay">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a class="button is-rounded" href="#rsvp" v-smooth-scroll>
+            <a class="button is-rounded is-small" href="#rsvp" v-smooth-scroll>
               <strong>RSVP</strong>
             </a>
           </div>
@@ -22,17 +22,24 @@
       </template>
     </b-navbar>
     <hero-banner id="top" />
-    <save-the-date-section v-if="saveTheDate" />
-    <intro-section :class="saveTheDate ? 'pt-6' : ''" />
-    <our-story v-if="showStory" />
-    <events-section v-if="showEvents" />
-    <photo-carousel />
-    <venue-section />
-    <map-section />
-    <map-display />
-    <registry-section v-if="showRegistry" />
-    <lodging-section v-if="showLodging" />
-    <rsvp-section />
+    <div v-if="!isWeddingDay">
+      <save-the-date-section v-if="saveTheDate" />
+      <intro-section :class="saveTheDate ? 'pt-6' : ''" />
+      <our-story v-if="showStory" />
+      <events-section v-if="showEvents" />
+      <photo-carousel />
+      <venue-section />
+      <map-section />
+      <map-display />
+      <registry-section v-if="showRegistry" />
+      <lodging-section v-if="showLodging" />
+      <activities-section v-if="showActivities" />
+      <rsvp-section />
+    </div>
+    <div v-else>
+      <program-section />
+      <oak-hill-section />
+    </div>
     <page-footer />
   </div>
 </template>
@@ -52,11 +59,14 @@ import {
   RegistrySection,
   RsvpSection,
   SaveTheDateSection,
+  ProgramSection,
+  OakHillSection,
+  ActivitiesSection,
 } from './sections'
 
-import { navItems } from './data/navItems'
+import { navItems, weddingDayNavItems } from './data/navItems'
 
-import { showStory, showEvents, showLodging, showRegistry, saveTheDate } from './data/toggles'
+import { showStory, showEvents, showLodging, showRegistry, saveTheDate, showActivities } from './data/toggles'
 
 export default {
   name: 'App',
@@ -74,6 +84,9 @@ export default {
     RsvpSection,
     PageFooter,
     SaveTheDateSection,
+    ProgramSection,
+    OakHillSection,
+    ActivitiesSection,
   },
   data: function () {
     return {
@@ -81,20 +94,30 @@ export default {
       showEvents,
       showRegistry,
       showLodging,
+      showActivities,
       saveTheDate,
       showNavbar: true,
       lastScrollPosition: 0,
       navItems,
+      weddingDayNavItems,
     }
   },
   computed: {
     visibleNavItems() {
       var items = [];
-      this.navItems.forEach(function (item) {
-        if (item.display) {
-          items.push(item);
-        }
-      });
+      if (!this.isWeddingDay) {
+        this.navItems.forEach(function (item) {
+          if (item.display) {
+            items.push(item);
+          }
+        });
+      } else {
+        this.weddingDayNavItems.forEach(function (item) {
+          if (item.display) {
+            items.push(item);
+          }
+        });
+      }
       return items;
     }
   },
@@ -124,8 +147,10 @@ export default {
 
 <style lang="scss">
 .navbar {
-  transition: all 900ms ease;
+  transition: background-color 900ms ease;
 }
+
+
 
 .transparent-nav {
   background-color: rgba(0, 0, 0, 0.5) !important;

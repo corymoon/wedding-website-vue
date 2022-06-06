@@ -15,7 +15,7 @@
             <template v-for="event in events">
                 <!-- small header -->
                 <header class="timeline-header" v-if="event.header" :key="event.id">
-                    <span class="tag is-primary">{{ event.title }}</span>
+                    <span class="tag is-primary">{{ dateHeader(event.date) }}</span>
                 </header>
                 <!-- item -->
                 <div class="timeline-item is-primary" v-else :key="event.id + '-item'">
@@ -24,7 +24,7 @@
                         <i :class="`fa fa-${event.icon}`"></i>
                     </div>
                     <div class="timeline-content">
-                        <p class="heading">{{ event.time }}</p>
+                        <p class="heading">{{ timelineTime(event.date) }}</p>
                         <p>{{ event.desc }}</p>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <template>
     <section class="has-text-centered" id="venue">
-        <VideoBg :sources="['oakHill.mp4']" class="video-bg">
+        <VideoBg :sources="sources" class="video-bg">
             <div class="video-bg-content">
                 <h3 class="is-uppercase venue-name">Oak Hill Farm</h3>
                 <p class="venue-location">Apple River, IL</p>
@@ -11,10 +11,16 @@
 
 <script>
 import VideoBg from 'vue-videobg'
+const video = require('@/assets/oakHill.mp4');
 
 export default {
     components: {
         VideoBg
+    },
+    data() {
+        return {
+            sources: [video],
+        }
     }
 }
 </script>

@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/scss/variables';
+
 .lightbox {
     z-index: 999;
 }
@@ -45,5 +47,10 @@ export default {
     width: unset !important;
     height: unset !important;
     max-height: 100vh;
+    border-radius: $main-border-radius * 2.5;
+}
+
+.lightbox__thumbnail img {
+    border-radius: $main-border-radius;
 }
 </style>

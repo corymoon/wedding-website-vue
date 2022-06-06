@@ -9,3 +9,8 @@ export { default as PhotoCarousel } from "./PhotoCarousel.vue";
 export { default as LodgingSection } from "./LodgingSection.vue";
 export { default as RegistrySection } from "./RegistrySection.vue";
 export { default as RsvpSection } from "./RsvpSection.vue";
+export { default as ActivitiesSection } from "./ActivitiesSection.vue";
+
+// wedding day sections
+export { default as ProgramSection } from "./weddingDay/ProgramSection.vue";
+export { default as OakHillSection } from "./weddingDay/OakHillSection.vue";

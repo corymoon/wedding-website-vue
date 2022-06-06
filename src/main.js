@@ -3,6 +3,7 @@ import App from "./App.vue";
 import Buefy from "buefy";
 import VueSmoothScroll from "vue2-smooth-scroll";
 import * as VueGoogleMaps from "@busability/vue2-google-maps";
+import dayjs from "dayjs";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faMapMarker,
@@ -63,6 +64,15 @@ Vue.component("section-content", SectionContent);
 
 Vue.mixin({
   computed: {
+    isWeddingDay() {
+      // const weddingString = "June 5, 2022";
+      const weddingString = "October 8, 2023";
+      return (
+        new Date(weddingString).getDate() == new Date().getDate() &&
+        new Date(weddingString).getMonth() == new Date().getMonth() &&
+        new Date(weddingString).getFullYear() == new Date().getFullYear()
+      );
+    },
     numHotels() {
       return lodging.length == 1 ? "" : this.numberToWords(lodging.length);
     },
@@ -75,6 +85,12 @@ Vue.mixin({
       var converter = require("number-to-words");
       return converter.toWords(value);
     },
+    dateHeader(date) {
+      return dayjs(date).format("MMMM D, YYYY");
+    },
+    timelineTime(date) {
+      return dayjs(date).format("h:mm A");
+    }
   },
 });
 

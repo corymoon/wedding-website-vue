@@ -1,6 +1,6 @@
 <template>
-    <page-section md accent id="lodging">
-        <section-title>Lodging</section-title>
+    <page-section md id="lodging">
+        <section-title>Accommodations</section-title>
         <p>Galena is full of amazing places to stay, but for your convenience blocks of rooms have been reserved at the
             following {{ numHotels }} {{ locationText }}:</p>
         <ul v-for="l in lodging" :key="l.id" class="my-3">
@@ -20,8 +20,6 @@
 <script>
 import { showLodging } from '@/data/toggles'
 import {lodging} from '@/data/lodging'
-
-
 
 export default {
     data() {

@@ -1,4 +1,17 @@
-import { showEvents, showStory, showLodging, showRegistry } from "./toggles";
+import { showEvents, showStory, showLodging, showRegistry, showActivities } from "./toggles";
+
+export let weddingDayNavItems = [
+  {
+    label: "Program",
+    href: "#program",
+    display: true,
+  },
+  {
+    label: "Oak Hill Farm",
+    href: "#oak-hill",
+    display: true,
+  }
+];
 
 export let navItems = [
   {
@@ -17,9 +30,14 @@ export let navItems = [
     display: true,
   },
   {
-    label: "Lodging",
+    label: "Accommodations",
     href: "#lodging",
     display: showLodging,
+  },
+  {
+    label: "Things to Do",
+    href: "#activities",
+    display: showActivities,
   },
   {
     label: "Registry",

@@ -1,7 +1,7 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 // @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 
 @import "./variables";
 
@@ -89,10 +89,10 @@ $link-focus-border: $primary;
 @import "~bulma-timeline/dist/css/bulma-timeline";
 
 // fonts
-$family-sans-serif: 'Josefin Sans', sans-serif !important;
+$family-sans-serif: "Josefin Sans", sans-serif !important;
 $family-primary: $family-sans-serif;
 $family-secondary: $family-sans-serif;
-$family-serif: 'Playfair Display', serif !important;
+$family-serif: "Playfair Display", serif !important;
 
 @import "./headings";
 @import "./footer";
@@ -126,12 +126,20 @@ $family-serif: 'Playfair Display', serif !important;
   background-color: $my-warning-very-light !important;
 }
 
-.control.has-icons-left .input:focus ~ .icon, .control.has-icons-left .select:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon, .control.has-icons-right .select:focus ~ .icon {
+.control.has-icons-left .input:focus ~ .icon,
+.control.has-icons-left .select:focus ~ .icon,
+.control.has-icons-right .input:focus ~ .icon,
+.control.has-icons-right .select:focus ~ .icon {
   color: rgba($primary, 0.87);
 }
 
-html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+html.has-navbar-fixed-top,
+body.has-navbar-fixed-top {
   padding-top: 0 !important;
+}
+
+.card {
+  border-radius: $main-border-radius !important;
 }
 
 body {

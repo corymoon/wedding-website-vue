@@ -15,3 +15,6 @@ export let showLodging = false;
 
 // toggle showing the registry section
 export let showRegistry = false;
+
+// toggle showing the `things to do` section
+export let showActivities = false;
