@@ -67,14 +67,14 @@
                 </div>
             </div>
         </template>
-        <b-message type="is-success" v-show="showRsvpSubmitSuccess">
-            Thanks! We've recieved your RSVP information.
-        </b-message>
-        <b-message type="is-warning" v-show="showRsvpSubmitFail">
-            Hmm... Something went wrong. Try again later.
-        </b-message>
-        <b-button rounded expanded type="is-primary" :loading="submitting" :disabled="rsvpDisabled || submitting"
-            @click="submitRsvpForm()">
+        <b-button
+            rounded
+            expanded
+            type="is-primary"
+            :loading="submitting"
+            :disabled="rsvpDisabled || submitting"
+            @click="submitRsvpForm()"
+        >
             Submit
         </b-button>
         <!-- transportation modal -->
@@ -84,9 +84,7 @@
                     <div class="content">
                         <section-title>Transportation</section-title>
                         <p>Transportation will be provided for all to the ceremony and reception at Oak Hill Farm on
-                            Sunday, October 8th. No hotel stay required for transportation. It departs from {{
-                                    lodging.length == 1 ? 'this' : 'these'
-                            }}
+                            Sunday, October 8th. No hotel stay required for transportation. It departs from {{ thisThese }}
                             {{ numHotels }} {{ locationText }}:</p>
                         <ul>
                             <li v-for="hotel in lodging" :key="hotel.id">
@@ -126,8 +124,6 @@ export default {
             guestMeals: [],
             transportation: null,
             submitting: false,
-            showRsvpSubmitSuccess: false,
-            showRsvpSubmitFail: false,
         }
     },
     watch: {
@@ -158,19 +154,22 @@ export default {
             fetch(rsvpUrl, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     console.log('Success!', response);
-                    this.showRsvpSubmitSuccess = true;
+                    this.showToastMessage('is-success', "Thanks! We've recieved your RSVP information.");
                     this.submitting = false;
                     this.resetForm();
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    this.showRsvpSubmitFail = true;
+                    this.showToastMessage('is-danger', "Hmm... Something went wrong. Try again later.");
                     this.submitting = false;
                     this.resetForm();
                 })
         },
     },
     computed: {
+        thisThese() {
+            return this.lodging.length == 1 ? 'this' : 'these';
+        },
         validEmail() {
             return (this.emailRegex.test(this.email)) ? true : false;
         },

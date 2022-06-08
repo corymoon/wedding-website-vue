@@ -23,11 +23,12 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import SectionTitle from "./components/SectionTitle.vue";
 import PageSection from "./components/PageSection.vue";
 import SectionContent from "./components/SectionContent.vue";
+import EventCard from "./components/EventCard.vue";
 
 // styles
 import "./assets/scss/main.scss";
 
-// maps api
+// google api
 import { mapsAPIkey } from "../maps";
 
 // data
@@ -61,6 +62,7 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("section-title", SectionTitle);
 Vue.component("page-section", PageSection);
 Vue.component("section-content", SectionContent);
+Vue.component("event-card", EventCard);
 
 Vue.mixin({
   computed: {
@@ -90,7 +92,16 @@ Vue.mixin({
     },
     timelineTime(date) {
       return dayjs(date).format("h:mm A");
-    }
+    },
+    showToastMessage(type, message) {
+      this.$buefy.toast.open({
+        duration: 7000,
+        message: message,
+        position: "is-bottom",
+        type: type,
+        pauseOnHover: true
+      });
+    },
   },
 });
 

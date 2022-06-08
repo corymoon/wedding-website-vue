@@ -75,65 +75,24 @@ export let programEvents = [
 ];
 
 export let events = [
-  // 10/6/2023
-  {
-    id: uuidv4(),
-    header: true,
-    title: "October 6, 2023",
-    date: new Date("October 6, 2023")
-  },
   {
     id: uuidv4(),
     icon: "flag",
     time: "11:00 AM",
-    desc: "Arrival",
+    title: "Arrival",
+    desc: `We arrive in Galena for some fun and relaxation before the wedding. <a href="#activities">click here</a> for some activities to check out.`,
     date: new Date("October 6, 2023, 11:00:00"),
     location: {
       name: "",
       address: "",
     },
   },
-  // 10/7/2023
-  {
-    id: uuidv4(),
-    header: true,
-    title: "October 7, 2023",
-    date: new Date("October 7, 2023")
-  },
-  {
-    id: uuidv4(),
-    icon: "flag",
-    time: "11:00 AM",
-    desc: "Rehersal",
-    date: new Date("October 7, 2023 11:00:00"),
-    location: {
-      name: "",
-      address: "",
-    },
-  },
-  {
-    id: uuidv4(),
-    icon: "drumstick-bite",
-    time: "4:00 PM",
-    desc: "Rehersal Dinner",
-    date: new Date("October 7, 2023 16:00:00"),
-    location: {
-      name: "",
-      address: "",
-    },
-  },
-  // 10/8/2023
-  {
-    id: uuidv4(),
-    header: true,
-    title: "October 8, 2023",
-    date: new Date("October 8, 2023"),
-  },
   {
     id: uuidv4(),
     icon: "ring",
     time: "12:00 PM",
-    desc: "Ceremony",
+    title: "Ceremony",
+    desc: `We tie the knot!`,
     date: new Date("October 8, 2023 12:00:00"),
     location: {
       name: "Oak Hill Farm - Woodland Forest",
@@ -144,7 +103,8 @@ export let events = [
     id: uuidv4(),
     icon: "utensils",
     time: "5:00 PM",
-    desc: "Dinner",
+    title: "Dinner",
+    desc: `Dinner with everyone.`,
     date: new Date("October 8, 2023 17:00:00"),
     location: {
       name: "Oak Hill Farm - Pavillion",
@@ -155,7 +115,8 @@ export let events = [
     id: uuidv4(),
     icon: "glass-cheers",
     time: "10:00 PM",
-    desc: "Send-off",
+    title: "Send-off",
+    desc: `We leave the reception in a shower of sparklers.`,
     date: new Date("October 8, 2023 22:00:00"),
     location: {
       name: "Oak Hill Farm - Pavillion",

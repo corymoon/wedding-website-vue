@@ -9,6 +9,7 @@
             RSVP
           </a>  
         </div>
+        <p>{{toggles}}</p>
       </div>
 
 
@@ -33,15 +34,6 @@ export default {
       logo,
     }
   },
-  computed: {
-    // scrollDownTo() {
-    //   if (this.saveTheDate) {
-    //     return "#save-the-date";
-    //   } else {
-    //     return "#intro";
-    //   }
-    // }
-  }
 }
 </script>
 

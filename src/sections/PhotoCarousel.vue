@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/variables';
+@import '@/assets/scss/variables';
 
 .lightbox {
     z-index: 999;

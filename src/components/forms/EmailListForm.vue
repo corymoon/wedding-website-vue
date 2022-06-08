@@ -9,20 +9,11 @@
                 <b-input rounded icon="envelope" :value="email" v-model="email" name="Email" />
             </b-field>
         </b-field>
-        <!-- / join email list form -->
-
-        <b-message type="is-success" v-show="showEmailSubmitSuccess">
-            Thanks! We'll keep you updated!
-        </b-message>
-        <b-message type="is-warning" v-show="showEmailSubmitFail">
-            Hmm... Something went wrong. Try again later.
-        </b-message>
         <b-button
             rounded
             expanded
             type="is-primary"
-            :loading="submitting"
-            :disabled="submitting || emailSubmitDisabled"
+            :loading="submitting" :disabled="submitting || emailSubmitDisabled"
             @click="submitEmailListForm()"
         >
             Submit
@@ -40,8 +31,6 @@ export default {
             emailListUrl,
             name: null,
             email: null,
-            showEmailSubmitSuccess: false,
-            showEmailSubmitFail: false,
             submitting: false,
         }
     },
@@ -57,13 +46,13 @@ export default {
             fetch(emailListUrl, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     console.log('Success!', response);
-                    this.showEmailSubmitSuccess = true;
+                    this.showToastMessage('is-success', "Thanks! We'll keep you updated!");
                     this.submitting = false;
                     this.resetForm();
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    this.showEmailSubmitFail = true;
+                    this.showToastMessage('is-danger', "Hmm... Something went wrong. Try again later.");
                     this.submitting = false;
                     this.resetForm();
                 })

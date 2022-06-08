@@ -5,7 +5,7 @@
             <p class="mb-3">We would greatly appreciate if you could RSVP before 8th of August '23</p>
         </section-content>
         <section-content v-else>
-            <p class="mb-3">...but not yet. Once you receieve a formal invitation, you'll be to provide us your details
+            <p class="mb-3">...but not yet. Once we send formal invitations, you'll be to provide us your details
                 here.</p>
             <p class="mb-3">if you want to recieve updates about when to RSVP, transportation, lodging, etc, please fill
                 out the form below.</p>

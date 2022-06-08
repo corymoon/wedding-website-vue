@@ -2,18 +2,23 @@
     <page-section id="registry" accent>
         <section-title>Registry Information</section-title>
         <section-content>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, voluptates molestiae. Libero delectus cumque quod exercitationem suscipit in ea, magni corrupti dignissimos minus vel perferendis eum labore deserunt ipsum consequuntur?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, voluptates molestiae. Libero delectus cumque quod exercitationem suscipit in ea, magni corrupti dignissimos minus vel perferendis eum labore deserunt ipsum consequuntur?</p>
+            <p class="mb-4">Please note that your love and support is all we ask for on our special day. However, if you do wish to celebrate with a gift, we are registered at:</p>
+            <ul>
+                <li v-for="r in registryProviders" :key="r.name">
+                    <a :href="r.href">{{ r.name }}</a>
+                </li>
+            </ul>
         </section-content>
     </page-section>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-
-            }
+import { registryProviders } from '@/data/registry';
+export default {
+    data() {
+        return {
+            registryProviders,
         }
     }
+}
 </script>

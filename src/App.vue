@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <b-navbar fixed-top class="is-primary" :class="{ 'transparent-nav': showNavbar }">
+    <b-navbar fixed-top class="is-primary" :class="{ 'transparent-nav': showNavbar }" wrapper-class="container">
       <template #brand>
         <b-navbar-item href="#top" v-smooth-scroll>
-          <img src="./assets/logo.png" alt="Joni and Cory Wedding Logo" />
+          <b-image :src="navLogo" alt="Joni and Cory Wedding Logo" />
         </b-navbar-item>
       </template>
       <template #start>
@@ -68,6 +68,8 @@ import { navItems, weddingDayNavItems } from './data/navItems'
 
 import { showStory, showEvents, showLodging, showRegistry, saveTheDate, showActivities } from './data/toggles'
 
+const navLogo = require("@/assets/logo.png");
+
 export default {
   name: 'App',
   components: {
@@ -100,6 +102,7 @@ export default {
       lastScrollPosition: 0,
       navItems,
       weddingDayNavItems,
+      navLogo,
     }
   },
   computed: {
